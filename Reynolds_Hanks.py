@@ -1,10 +1,10 @@
 import math 
 
 # Given variables
-x = 1 #?
-y = 1 #?
 a = 3
 b = 15
+x = 1 #?
+y = 1 #?
 R = a / b
 
 # Check for symmetric case
@@ -40,8 +40,8 @@ def Reynolds_H(R):
     Re_c = (4848*R)/((1+R)*F_*Z)
     return Re_c
 
-print(u(1))
-print(F(1))
+print("Z = ", u(1))
+print("F = ", F(1))
 print("Reynolds number: ", round(Reynolds_H(1), 2))
 
 
