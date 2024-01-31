@@ -5,6 +5,7 @@ tau = -1  # Example value???
 a = 3       # Horizontal boundary condition 
 b = 15      # Vertical boundary condition 
 x = a       # Constant value for x
+#mu = [0,1,2,3,4,5,6] #Viscosity 
 
 # Plot of velocity as a function of vertical position in a rectangular channel 
 def u(x, y, a, b, tau, terms=5):
