@@ -31,7 +31,7 @@ def u(x, y, a, b, T, terms=5):
 y_range = np.linspace(-b, b, 20)
 
 # Set the value for U_avg (this will determine the shear stress T)
-U_avg = 0.2
+U_avg = 0.2*100 #cm/s to m/s
 
 # Calculate T using the provided U_avg value
 T_value = T(U_avg)
