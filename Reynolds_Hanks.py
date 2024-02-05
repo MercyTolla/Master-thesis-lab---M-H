@@ -1,8 +1,8 @@
 import math 
 
 # Given variables
-a = 3
-b = 15
+a = 15/2
+b = 3/2
 x = 1 #?
 y = 1 #?
 R = a / b
@@ -40,9 +40,9 @@ def Reynolds_H(R):
     Re_c = (4848*R)/((1+R)*F_*Z)
     return Re_c
 
-print("Z = ", u(1))
-print("F = ", F(1))
-print("Reynolds number: ", round(Reynolds_H(1), 2))
+print("Z = ", u(R))
+print("F = ", F(R))
+print("Reynolds number: ", round(Reynolds_H(R), 2))
 
 
     
