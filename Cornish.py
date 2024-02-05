@@ -19,13 +19,13 @@ def T(U_avg):
     return T
 
 # # Function for the velocity field u(x, y) - USING CORNISH
-# def u_C(x, y, a, b, T, terms=5):
-#     result = - (32 * T * b**2) / np.pi**3 * (
-#         np.sum([(np.cosh(n * np.pi * x / (2 * b)) / np.cosh(n * np.pi * a / (2 * b))) * np.cos(n * np.pi * y / (2 * b)) 
-#                 for n in range(1, terms + 1)])
-#     ) + T * (b**2 - y**2)
+def u_C(x, y, a, b, T, terms=5):
+    result = - (32 * T * b**2) / np.pi**3 * (
+        np.sum([(np.cosh(n * np.pi * x / (2 * b)) / np.cosh(n * np.pi * a / (2 * b))) * np.cos(n * np.pi * y / (2 * b)) 
+                for n in range(1, terms + 1)])
+    ) + T * (b**2 - y**2)
 
-#     return result
+    return abs(result)
 
 # Function for the velocity field u(x, y) - USING HANKS
 def u_H(x, y, a, b, T, terms=5):
@@ -35,10 +35,11 @@ def u_H(x, y, a, b, T, terms=5):
     xi = x / a
     result = T * b**2 * (1 - eta**2 - 32 / np.pi**3 * (np.sum([A_j(j) * np.cosh(lambda_j(j) * R * xi) / np.cosh(lambda_j(j) * R) * np.cos(lambda_j(j) * eta)
                   for j in range(1, terms + 1)])))
-    return result
+    return abs(result)
 
 # Define the range of y values
-y_range = np.linspace(-a / 100, a / 100, 20)
+y_range = np.linspace(-b, b, 1000)
+#x_range = np.linspace(-a, a, 20)
 
 # Set the value for U_avg (this will determine the shear stress T)
 U_avg = 0.2  # m/s
@@ -47,7 +48,7 @@ U_avg = 0.2  # m/s
 T_value = T(U_avg * 100)
 
 # Compute the velocity field for each point in the range of y (note: x is constant)
-velocity_values = [u_H(x, y_val, a, b, T_value, terms=10) for y_val in y_range]
+velocity_values = [u_C(x, y_val, a, b, T_value, terms=10) for y_val in y_range]
 
 # Plot the velocity field
 plt.plot(y_range, velocity_values)
