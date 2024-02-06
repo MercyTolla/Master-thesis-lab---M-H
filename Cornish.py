@@ -38,7 +38,7 @@ def u_H(x, y, a, b, T, terms=5):
     return abs(result)
 
 # Define the range of y values
-y_range = np.linspace(-b, b, 1000)
+y_range = np.linspace(-b/100, b/100, 1000)
 #x_range = np.linspace(-a, a, 20)
 
 # Set the value for U_avg (this will determine the shear stress T)
@@ -55,7 +55,7 @@ plt.plot(y_range, velocity_values)
 plt.xlabel('Vertical position, [cm]')
 plt.ylabel('Velocity [cm/s]')
 plt.title('Velocity as a Function of Vertical Position')
-plt.show()
+#plt.show()
 
 
 

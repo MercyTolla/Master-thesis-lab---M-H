@@ -38,6 +38,8 @@ def Reynolds_H(R):
     Z = u(R)
     F_ = F(R)
     Re_c = (4848*R)/((1+R)*F_*Z)
+    if Re_c > 2000: 
+        print("Reynolds number larger than 2000 (not laminar), model invalid")
     return Re_c
 
 print("Z = ", u(R))
