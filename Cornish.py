@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-a = 15       # Half width of the pipe in cm
-b = 3        # Half depth of the pipe in cm
+a = 15/2       # Half width of the pipe in cm
+b = 3/2        # Half depth of the pipe in cm
 x = a        # Horizontal position (constant value for x)
 R = a / b    # Aspect ratio
 
@@ -38,8 +38,7 @@ def u_H(x, y, a, b, T, terms=5):
     return abs(result)
 
 # Define the range of y values
-y_range = np.linspace(-b/100, b/100, 1000)
-#x_range = np.linspace(-a, a, 20)
+y_range = np.linspace(-b/100, b/100, 1000) #unit m
 
 # Set the value for U_avg (this will determine the shear stress T)
 U_avg = 0.2  # m/s
@@ -52,10 +51,10 @@ velocity_values = [u_C(x, y_val, a, b, T_value, terms=10) for y_val in y_range]
 
 # Plot the velocity field
 plt.plot(y_range, velocity_values)
-plt.xlabel('Vertical position, [cm]')
-plt.ylabel('Velocity [cm/s]')
+plt.xlabel('Vertical position, [m]')
+plt.ylabel('Velocity [m/s]')
 plt.title('Velocity as a Function of Vertical Position')
-#plt.show()
+plt.show()
 
 
 
