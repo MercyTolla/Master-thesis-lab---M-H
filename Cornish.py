@@ -25,7 +25,7 @@ def u_C(x, y, a, b, T, terms=5):
                 for n in range(1, terms + 1)])
     ) + T * (b**2 - y**2)
 
-    return abs(result)
+    return result
 
 # Function for the velocity field u(x, y) - USING HANKS
 def u_H(x, y, T):
@@ -35,7 +35,7 @@ def u_H(x, y, T):
     xi = x / a
     result = T * b**2 * (1 - eta**2 - 32 / np.pi**3 * (np.sum([A_j(j) * np.cosh(lambda_j(j) * R * xi) / np.cosh(lambda_j(j) * R) * np.cos(lambda_j(j) * eta)
                   for j in range(1, 5)])))
-    return abs(result)
+    return result
 
 # Define the range of y values
 y_range = np.linspace(-b, b, 100) #unit m
@@ -47,7 +47,8 @@ U_avg = 0.2  # m/s
 T_value = T(U_avg)
 
 # Calculate velocity values using u_H function
-velocity_values = [u_H(x, y_val, T_value) for y_val in y_range]
+#velocity_values = [u_H(x, y_val, T_value) for y_val in y_range]
+velocity_values = [u_C(x, y_val, a, b, T_value, terms=5) for y_val in y_range]
 
 # Create a scatter plot using Plotly
 fig = go.Figure(data=go.Scatter(x=y_range, y=velocity_values, mode='lines'))
