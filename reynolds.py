@@ -20,17 +20,20 @@ def Re(rho_m, avg_v, mu):
     return Re
 
 #Test 1 water 
-df_w = read_file("water_test3.xlsm")
+df_w1 = read_file("Data/water_test4.xlsm")
+df_w2 = read_file("Data/water_test4.xlsm")
 rho_w = 1000  #kg/m^3
 mu_w = 1.002 * 10**(-3)  #Pa*s
 
-avg_vw = pd.to_numeric(df_w["Flow meter [l/min]"], errors='coerce')  # Convert to numeric, handling errors
-avg_vw = avg_vw.dropna() #Filter out any NaN values
+#avg_vw1 = pd.to_numeric(df_w1["Flow meter [l/min]"], errors='coerce')  # Convert to numeric, handling errors
+#avg_vw1 = avg_vw.dropna() #Filter out any NaN values
+#print(round(Re(rho_w, avg_vw1, mu_w))) 
 
-#print(round(Re(rho_w, avg_vw, mu_w)))
+#At time of erosion - Test 1 water
+print(round(Re(rho_w, 77.07, mu_w)))
+#Test 2 water 
+print(round(Re(rho_w, 72.54, mu_w)))
 
-#At time of erosion
-#print(round(Re(rho_w, ..., mu_w)))
 
 
 

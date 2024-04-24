@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import Cornish as C
+import Excess_files.Cornish as C
 
 a = 15/100 #m
 b = 3/100 #m

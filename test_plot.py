@@ -85,11 +85,7 @@ def read_file(filename):
     print(df.dtypes)
 
 
-print(read_file("water_test3.xlsm"))
-
-
-#Skal vi plotte noe? 
-
+print(read_file("Data/water_test4.xlsm"))
 
 
 
