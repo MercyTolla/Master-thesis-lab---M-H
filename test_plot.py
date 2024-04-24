@@ -81,11 +81,11 @@ def read_file(filename):
 
     # Show the plot
     fig.show()
-    # print(df.head())
-    # print(df.dtypes)
+    print(df.head())
+    print(df.dtypes)
 
 
-print(read_file("water_test4.xlsm"))
+print(read_file("water_test2.xlsm"))
 
 
 #Skal vi plotte noe? 
