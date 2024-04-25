@@ -7,35 +7,28 @@ import numpy as np
 def read_file(filename):
     df = pd.read_excel(filename)
     
-    for column in df.columns:
-        df[column] = df[column].replace(',', '.')
+    #for column in df.columns:
+    #    df[column] = df[column].apply(lambda x: str(x).replace(',', '.'))
     
     df.set_index('Time  1 - default sample rate [s]', inplace=True)
     columns = df.columns
     
-    #y_tickvals = [0, 200, 400, 600, 800, 1000, 1500]
-    #y_ticktext = [str(val) for val in y_tickvals]
-
-    x_tickvals = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900]
-    x_ticktext = [str(val) for val in x_tickvals]
-
-            
     #Parametere: (Hva skal vi se på?)
     flow = df["Flow meter [l/min]"]
-    cell1 = df["Inlet cell [kg]"] #Vekt inlet cell [g]
-    cell2 = df["Outlet cell [kg]"] #Vekt outlet cell [g]
+    df["Inlet cell [kg]"] = df["Inlet cell [kg]"].astype(str).astype(int) #Vekt inlet cell [g]
+    df["Outlet cell [kg]"] = df["Outlet cell [kg]"].astype(str).astype(int) #Vekt outlet cell [g]
 
     fig = go.Figure()
 
-    #Trace for flow velocity
+    # Trace for flow velocity
     fig.add_trace(
         go.Scatter(
             x=df.index,
-            y=flow,
-            #y=df["MX840B_CH 4 [kg]"],
+            y=df['Flow meter [l/min]'],
             mode='lines',
             name='Velocity [l/min]',
-            line=dict(color='purple', width=1),  
+            line=dict(color='purple', width=1),
+            yaxis='y2'
         )
     )
     
@@ -43,10 +36,11 @@ def read_file(filename):
     fig.add_trace(
         go.Scatter(
             x=df.index,
-            y=cell1,
+            y=df['Inlet cell [kg]'],
             mode='lines',
             name='Inlet cell [kg]',
             line=dict(color='blue', width=1),
+            yaxis='y'
         )
     )
 
@@ -54,30 +48,34 @@ def read_file(filename):
     fig.add_trace(
         go.Scatter(
             x=df.index,
-            y=cell2,
+            y=df['Outlet cell [kg]'],
             mode='lines',
             name='Outlet cell [kg]',
             line=dict(color='green', width=1),
+            yaxis='y'
         )
     )
     
-    fig.update_xaxes(tickvals=x_tickvals, ticktext=x_ticktext)
-    
-    # Define the layout for OBM
+    # Update layout
     fig.update_layout(
         title='Time vs Velocity',
         xaxis_title='Time [s]',
-        yaxis_title='Velocity [l/min]',
+        yaxis_title='Weight [kg]',
+        yaxis=dict(title='Weight [kg]', overlaying='y', side='left'),  # Primary y-axis
+        yaxis2=dict(title='Velocity [l/min]', overlaying='y', side='right'),  # Secondary y-axis
+        legend=dict(x=0, y=1),
         height=800,
-        legend=dict(
-            x=0,
-            y=1,
-        ),
-        xaxis=dict(
-            range=[0, 1000]
-            
-        )
+        xaxis=dict(range=[0, 1000])
     )
+
+    
+    # Set tick values for x and y axes
+    x_tickvals = [0, 100, 200, 300, 400, 500, 600, 700]
+    x_ticktext = [str(val) for val in x_tickvals]
+    #y_tickvals = [0, 50, 100, 150, 200]
+    #y_ticktext = [str(val) for val in y_tickvals]
+    fig.update_xaxes(tickvals=x_tickvals, ticktext=x_ticktext)
+    #fig.update_yaxes(tickvals=y_tickvals, ticktext=y_ticktext)
 
     # Show the plot
     fig.show()
@@ -85,7 +83,7 @@ def read_file(filename):
     print(df.dtypes)
 
 
-print(read_file("Data/water_test4.xlsm"))
+print(read_file("Data/water_test5.xlsm"))
 
 
 
