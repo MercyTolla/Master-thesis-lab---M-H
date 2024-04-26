@@ -31,7 +31,7 @@ def read_file(filename):
             y=df['Inlet cell [kg]'],
             mode='lines',
             name='Inlet cell [kg]',
-            line=dict(color='blue', width=1),
+            line=dict(color='blue', width=1.5),
         ),
         secondary_y=True,
     )
@@ -42,17 +42,15 @@ def read_file(filename):
             y=df['Outlet cell [kg]'],
             mode='lines',
             name='Outlet cell [kg]',
-            line=dict(color='green', width=1),
+            line=dict(color='green', width=1.5),
         ),
         secondary_y=True,
     )
     
     # Update layout
     fig.update_layout(
-        title='Time vs Velocity',
+        title='Time vs Weight, Velocity',
         xaxis_title='Time [s]',
-        #yaxis=dict(title='Velocity [l/min]', overlaying='y', side='left'),  
-        #yaxis2=dict(title='Weight [kg]', overlaying='y', side='right'),
         legend=dict(x=0, y=1),
         height=800,
     )
@@ -66,8 +64,8 @@ def read_file(filename):
 
     # Show the plot
     fig.show()
-    print(df.head())
-    print(df.dtypes)
+    #print(df.head())
+    #print(df.dtypes)
 
-# Call the function with your filename
-read_file("Data/water_test5.xlsm")
+
+read_file("Data/obm_test1.xlsm")
