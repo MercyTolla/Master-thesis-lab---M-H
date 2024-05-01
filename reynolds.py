@@ -39,17 +39,17 @@ print(round(Re(rho_w, 72.54, mu_w)))
 #Test 1 oil 
 df_o1 = read_file("Data/obm_test1.xlsm")
 df_o2 = read_file("Data/obm_test2.xlsm")
-rho_o = 1000  #kg/m^3 ???
-mu_o = 1.002 * 10**(-3)  #Pa*s ????
+rho_o = 2100  #kg/m^3 
+mu_o = 4.305 * 10**(-2)  #Pa*s 
 
 #avg_vw1 = pd.to_numeric(df_w1["Flow meter [l/min]"], errors='coerce')  # Convert to numeric, handling errors
 #avg_vw1 = avg_vw.dropna() #Filter out any NaN values
 #print(round(Re(rho_w, avg_vw1, mu_w))) 
 
 #At time of erosion - Test 1 water
-print(round(Re(rho_o, 77.07, mu_o)))
+print(round(Re(rho_o, 153.45, mu_o)))
 #Test 2 oil 
-print(round(Re(rho_o, 72.54, mu_o)))
+print(round(Re(rho_o, 142.12, mu_o)))
 
 
 
