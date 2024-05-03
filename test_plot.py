@@ -64,8 +64,5 @@ def read_file(filename):
 
     # Show the plot
     fig.show()
-    #print(df.head())
-    #print(df.dtypes)
 
-
-read_file("Data/obm_test3.xlsm")
+read_file("Data/water_test6(2).xlsm")
