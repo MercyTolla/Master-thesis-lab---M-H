@@ -81,9 +81,6 @@ print("Test 3", round(Re(rho_o, avg_vo3, mu_o)))
 
 
 
-
-
-
 #Plot (Tviler på at vi trenger dette)
 
 # fig = go.Figure()
