@@ -19,6 +19,4 @@ This GitHub repository includes all relevant data files and codes used in the la
 - **Erosion Data**: Data from the erosion cell tests.
 - **Rheometer Data**: Data from the rotational and oscillatory tests conducted with the Anton Paar Rheometer.
 """
-with open("README.md", "w") as file:
-    file.write(readme_content)
 
