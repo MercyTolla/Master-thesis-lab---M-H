@@ -18,5 +18,6 @@ This GitHub repository includes all relevant data files and codes used in the la
 
 - **Erosion Data**: Data from the erosion cell tests. The format for the erosion cell spreadsheet filenames is as follows: `wetting fluid_testnumber`. For example, `obm_test2`. In cases where a test has been redone due to errors or mistakes, the new test replaces the previous one. For instance, `obm_test4(3)` indicates that the fourth test conducted replaces test 3.
 - **Rheometer Data**: Data from the rotational and oscillatory tests conducted with the Anton Paar Rheometer.
+- **Flow rate comparison**: Excel files containing all three tests for the representative wetting fluid, which have been used to create plots comparing the flow rates across all three tests. 
 """
 
